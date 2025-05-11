@@ -1,0 +1,144 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 20 20 20;
+
+    --card: 255 255 255;
+    --card-foreground: 20 20 20;
+
+    --popover: 255 255 255;
+    --popover-foreground: 20 20 20;
+
+    --primary: 252 245 255;
+    --primary-foreground: 155 135 245;
+
+    --secondary: 249 250 251;
+    --secondary-foreground: 20 20 20;
+
+    --muted: 249 250 251;
+    --muted-foreground: 107 114 128;
+
+    --accent: 243 244 246;
+    --accent-foreground: 20 20 20;
+
+    --destructive: 254 226 226;
+    --destructive-foreground: 239 68 68;
+
+    --border: 229 231 235;
+    --input: 229 231 235;
+    --ring: 155 135 245;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 20 20 20;
+    --foreground: 250 250 250;
+
+    --card: 30 30 30;
+    --card-foreground: 250 250 250;
+
+    --popover: 30 30 30;
+    --popover-foreground: 250 250 250;
+
+    --primary: 155 135 245;
+    --primary-foreground: 252 245 255;
+
+    --secondary: 40 40 40;
+    --secondary-foreground: 250 250 250;
+
+    --muted: 40 40 40;
+    --muted-foreground: 161 161 170;
+
+    --accent: 40 40 40;
+    --accent-foreground: 250 250 250;
+
+    --destructive: 127 29 29;
+    --destructive-foreground: 252 165 165;
+
+    --border: 40 40 40;
+    --input: 40 40 40;
+    --ring: 155 135 245;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html, body {
+    font-family: 'Inter', sans-serif;
+    @apply bg-background text-foreground;
+    @apply transition-colors duration-300;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/30 dark:bg-black/30 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-2xl shadow-xl;
+  }
+  
+  .button-glow {
+    @apply relative overflow-hidden transition-all duration-300 hover:shadow-[0_0_15px_rgba(155,135,245,0.6)] hover:scale-105;
+  }
+  
+  .button-glow::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-purple-300/80 to-indigo-400/80 opacity-0 transition-opacity duration-300;
+  }
+  
+  .button-glow:hover::before {
+    @apply opacity-20;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-delay-1 {
+    animation: float 6s ease-in-out 2s infinite;
+  }
+  
+  .animate-float-delay-2 {
+    animation: float 6s ease-in-out 4s infinite;
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-600;
+  }
+  
+  .task-card {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  .blur-dot {
+    @apply absolute rounded-full blur-xl opacity-70 bg-purple-300;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-to-br from-purple-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800;
+  }
+}
+
